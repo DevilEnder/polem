@@ -1,0 +1,49 @@
+body {
+    margin: 0;
+}
+
+header {
+    width: 100vw;
+    height: 10vh;
+    background-color: #F2F600;
+    top: 0;
+    position: sticky;
+}
+
+p {
+    font-size: 32px;
+
+    margin-bottom: 0px;
+    text-align: center;
+    margin-left: 7px;
+    margin-right: 7px;
+
+    margin-top: 15px;
+
+}
+
+div {
+    overflow-y: scroll;
+}
+#h1-2 {
+    color: #AC6802;
+    font-size: 36px;
+    margin-left: 8px;
+}
+
+#h1 {
+    text-align: center;
+    margin-right: auto;
+    margin-top: -6vh;
+    margin-left: auto;
+}
+
+#seta {
+    height: 5vh;
+    width: 5vh;
+    display: inline-block;
+
+    background-color: rgba(255, 255, 255, 0);
+
+    margin-top: 2.5vh;
+}

@@ -1,0 +1,57 @@
+
+img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 60px;
+}
+
+form {
+    text-align: center;
+
+}
+
+.lembra {
+    text-align: center;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 25px;
+}
+
+.lembra>input {
+    height: 25px;
+    width: 25px;
+}
+
+
+
+.inputForm {
+    margin-top: 30px;
+    height: 60px;
+    width: 280px;
+    font-size: 30px;
+    text-align: center;
+    border-radius: 10px;
+
+
+}
+
+button {
+    height: 40px;
+    width: 90px;
+    background-color: rgb(131, 255, 152);
+    margin-top: 30px;
+    font-size: 15px;
+
+    border-radius: 7px;
+
+}
+#versao {
+    position: absolute;
+    bottom: 0;
+    margin-bottom: 0px;
+    left: 0;
+    right: 0;
+    text-align: center;
+  }

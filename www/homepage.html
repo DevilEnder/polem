@@ -1,0 +1,57 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/homepage.css">
+    <meta http-equiv="Content-Security-Policy" content="default-src * self blob: data: gap:; style-src * self 'unsafe-inline' blob: data: gap:; script-src * 'self' 'unsafe-eval' 'unsafe-inline' blob: data: gap:; object-src * 'self' blob: data: gap:; img-src * self 'unsafe-inline' blob: data: gap:; connect-src self * 'unsafe-inline' blob: data: gap:; frame-src * self blob: data: gap:;">
+</head>
+
+<body>
+    <div class="top">
+        <img src="./img/logo_polem.png" class="imagis" id="logo">
+        <img src="./img/Botao_sair.png" id="sair" onclick="window.location.href='./index.html'">
+    </div>
+    
+    <div class="dados dadosPessoais" style="background-color: #06A703" onclick="window.location.href='./dadospessoais.html'">
+        <h1>⠀Dados pessoais</h1>
+        <img src="./img/simbolo_5.png">
+    </div>
+    
+
+    <div class="dados" id="lesaoDados" style="background-color: #BF0D0D" onclick="window.location.href='./dadoslesao.html'">
+        <h1>⠀Dados da lesão</h1> <img src="./img/simbolo_4.png">
+    </div>
+
+    <div class="dados" id="comorbidades" style="background-color: #BC723C" onclick="window.location.href='./comorbidades.html'">
+    <h1>⠀Complicações e <br>⠀cormobidades</h1><img src="./img/Simbolo_3.png">
+    </div>
+
+    <div class="dados" id="cuidadordireto" style="background-color: #05B4DA" onclick="window.location.href='./cuidador.html'">
+    <h1>⠀Cuidador direto</h1><img src="./img/simbolo_0.png">
+    </div>
+
+    <div class="dados" id="dadosMedicos" style="background-color: #F2F600" onclick="window.location.href='./dadosmedicos.html'">
+        <h1>⠀Dados médicos</h1><img src="./img/simbolo_1.png">
+    </div>
+
+    <div class="dados" id="necessidades" style="background-color: #952AC8" onclick="window.location.href='./necessidades.html'">
+        <h1> Necessidades  <br> devido a deficiência</h1><img src="./img/simbolo_2.png">
+    </div>
+    <script>
+        // Lê o valor do cookie com nome 'user_id'
+        const cookieValue = document.cookie
+        .split('; ')
+        .find(row => row.startsWith('user_id='))
+        .split('=')[1];
+
+        // Usa o valor do cookie
+        console.log(cookieValue);
+    </script>
+</body>
+<h4 id="versao"> (nome) V1.0.0</h4>
+</html>

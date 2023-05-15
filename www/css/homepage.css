@@ -1,0 +1,71 @@
+/* a fazer
+
+ desenvolver media queries
+
+ 
+*/
+
+
+.top {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 1px;
+
+}
+
+.dados {
+
+    display: flex;
+
+    width: 80vw;
+    height: 75px;
+
+    margin-top: 10px;
+
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 10px;
+
+
+
+    align-items: center;
+
+    font-size: 10px;
+
+    font-family: Arial, Helvetica, sans-serif;
+
+
+
+}
+
+.dados>img {
+    height: 65px;
+
+    position: absolute;
+
+    margin-left: calc(100% - 160px);
+}
+
+#sair {
+    height: 70px;
+
+    margin-top: -15px;
+}
+
+#logo {
+    width: calc(100% - 60px);
+}
+#versao {
+    position: absolute;
+    bottom: 0;
+    margin-bottom: 0px;
+    left: 0;
+    right: 0;
+    text-align: center;
+  }
+#sair {
+    height: 70px;
+
+    margin-top: -15px;
+}

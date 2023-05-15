@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="./css/dadospessoais.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src * self blob: data: gap:; style-src * self 'unsafe-inline' blob: data: gap:; script-src * 'self' 'unsafe-eval' 'unsafe-inline' blob: data: gap:; object-src * 'self' blob: data: gap:; img-src * self 'unsafe-inline' blob: data: gap:; connect-src self * 'unsafe-inline' blob: data: gap:; frame-src * self blob: data: gap:;">
+
+
+    <title>Document</title>
+</head>
+<header>
+    <img src="./img/voltar_1.png" alt="" id="seta" onclick="window.location.href='./homepage.html'">
+        <h1>Dados Pessoais</h1>
+    <img src="./img/simbolo_5.png" alt="" id="icone">
+</header>
+
+<img src="" alt="" srcset="" id="foto">
+
+
+<body>
+
+    <div>
+        <p>Nome</p>
+        <input type="text" id="nome" name="nome">
+        <p>CPF</p>
+        <input type="number" maxlength=11 id="cpf">
+        <p>Nascimento</p>
+        <input type="date" id="nascimento">
+        <p>Endereço</p>
+        <input type="text" id="endereco">
+        <p>Telefone pessoal</p>
+        <input type="text" id="telefonepessoal">
+        <p>Telefone para recados</p>
+        <input type="text" id="telefonerecado">
+    </div>
+    <script>
+    function getCookie(name) {
+        var value = "; " + document.cookie;
+        var parts = value.split("; " + name + "=");
+        if (parts.length == 2) {
+            return parts.pop().split(";").shift();
+        }
+    }
+    function preencherDados() {
+    var id = getCookie("user_id");
+    var xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+            var response = JSON.parse(xhr.responseText);
+            var nome = response.nome;
+            var cpf = response.cpf;
+            var nascimento = response.nascimento;
+            var endereco = response.endereco;
+            var telefonepessoal = response.telefonepessoal;
+            var telefonerecado = response.telefonerecado;
+            var imagem = response.img;
+            var route = "https://polemapp.000webhostapp.com/imagens/"
+            document.getElementById("nome").value = nome;
+            document.getElementById("cpf").value = cpf;
+            document.getElementById("nascimento").value = nascimento;
+            document.getElementById("endereco").value = endereco;
+            document.getElementById("telefonepessoal").value = telefonepessoal;
+            document.getElementById("telefonerecado").value = telefonerecado;
+            document.getElementById("foto").src = route + imagem;
+        }
+    };
+    xhr.open("GET", "https://polemapp.000webhostapp.com/localizaid.php?id=" + id, true);
+    xhr.send();
+}
+        window.onload = preencherDados();
+    </script>
+    <script>
+        function bloquearInputs() {
+            var inputs = document.querySelectorAll("input");
+            for (var i = 0; i < inputs.length; i++) {
+                inputs[i].readOnly = true;
+                
+            }
+        }
+        bloquearInputs()
+    </script>
+
+</html>

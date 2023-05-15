@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="./css/dadosmedicos.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>        
+</head>
+<header>
+    <img src="./img/voltar_1.png" alt="" id="seta" onclick="window.location.href='./homepage.html'">  
+        <h1>Dados médicos</h1>
+    <img src="./img/simbolo_1.png" alt="" srcset="" id="icone">
+</header>
+
+
+
+<body>
+    <div>
+        <p id="p2">Tipo sanguíneo</p>
+        <input type="text" id="input2">
+        <p>alergias</p>
+        <input type="text" id="alergia">
+        <p>Medicamentos</p>
+        <input type="text" id="medicamentos">
+        
+    </div>
+    <script>
+        function getCookie(name) {
+        var value = "; " + document.cookie;
+        var parts = value.split("; " + name + "=");
+        if (parts.length == 2) {
+            return parts.pop().split(";").shift();
+        }
+    }
+    function preencherDados() {
+            var id = getCookie("user_id");
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+                    var response = JSON.parse(xhr.responseText);
+                    var sangue = response.sangue;
+                    var alergia = response.alergia;
+                    var medicamentos = response.medicamentos;
+
+                    document.getElementById("input2").value = sangue;
+                    document.getElementById("alergia").value = alergia;
+                    document.getElementById("medicamentos").value = medicamentos;
+                }
+            };
+            xhr.open("GET", "https://polemapp.000webhostapp.com/localizaid.php?id=" + id, true);
+            xhr.send();
+        }
+        window.onload = preencherDados;
+        function bloquearInputs() {
+            var inputs = document.querySelectorAll("input");
+            for (var i = 0; i < inputs.length; i++) {
+                inputs[i].readOnly = true;
+                
+            }
+        }
+        bloquearInputs();
+    </script>
+
+</body>
+
+</html>

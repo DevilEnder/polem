@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="./css/emergenciais.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function preencherDados() {
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+                    var response = JSON.parse(xhr.responseText);
+                    var sepse = response.sepse;
+                    var tvp = response.tvp;
+                    var da = response.da;
+                        if (sepse == 1) {
+                            document.getElementById("SEPSE").style.display = 'block';
+                        }
+                        else{
+                            document.getElementById("SEPSE").style.display = 'none';
+                        }
+                        if (tvp == 1) {
+                            document.getElementById("TVP").style.display = 'block';
+                        }
+                        else{
+                            document.getElementById("TVP").style.display = 'none';
+                        }
+                        if (da == 1) {
+                            document.getElementById("DA").style.display = 'block';
+                        }
+                        else{
+                            document.getElementById("DA").style.display = 'none';
+                        }
+                }
+            };
+            xhr.open("GET", "http://localhost/polem-web/autenticalogin.php", true);
+            xhr.send();
+        }
+        window.onload = preencherDados;
+    </script>
+</head>
+<header>
+    <img src="./img/voltar_1.png" alt="" id="seta" onclick="window.location.href='./comorbidades.html'">
+    <h1 id="h1">Comorbidades<br> Emergenciais</h1>
+    <img src="./img/simbolo_6.png" alt="" srcset="" id="icone">
+</header>
+
+
+<body>
+    <div class="dados" id="SEPSE" style="background-color: #F2F600" onclick="window.location.href='./sepse.html'">
+        <h1>SEPSE</h1> 
+    </div>
+    <div class="dados" id="TVP" style="background-color: #F2F600" onclick="window.location.href='./tvp.html'">
+        <h1>Trobose venosa profunda<br>(TVP)</h1> 
+    </div>
+    <div class="dados" id="DA" style="background-color: #F2F600" onclick="window.location.href='./da.html'">
+        <h1>Disreflexia autonômica <br> (DA)</h1> 
+    </div>
+    <script>
+        function bloquearInputs() {
+            var inputs = document.querySelectorAll("input");
+            for (var i = 0; i < inputs.length; i++) {
+                inputs[i].readOnly = true;
+                
+            }
+        }
+        bloquearInputs();
+    </script>
+</body>
+
+</html>

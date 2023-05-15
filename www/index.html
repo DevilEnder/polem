@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+
+<html lang="pt-br">
+
+<head>
+    <link rel="stylesheet" href="./css/login.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src * self blob: data: gap:; style-src * self 'unsafe-inline' blob: data: gap:; script-src * 'self' 'unsafe-eval' 'unsafe-inline' blob: data: gap:; object-src * 'self' blob: data: gap:; img-src * self 'unsafe-inline' blob: data: gap:; connect-src self * 'unsafe-inline' blob: data: gap:; frame-src * self blob: data: gap:;">
+    <script>
+        function mudaurl() {
+  window.location.href = "https://polemweb.web.app/"
+} 
+window.onload = mudaurl();  
+    </script>
+    <title>login</title>
+</head>
+<body>
+    <div class="container">
+
+        <div class="container">
+
+            <img src="./img/logo.png">
+            <br>
+            <form method="POST" action="https://polemapp.000webhostapp.com/autenticalogin.php" id="login" name="login">
+                <input type="text" placeholder="usuario" class="inputForm" name="username" id="username">
+                <br>
+                <input type="password" placeholder="senha" class="inputForm" name="password" id="password">
+                <br>
+                <button type="submit" onclick="enviarDados(event)">Confirmar</button>
+
+            </form>
+        </div>
+
+    </div>
+
+    <script src="cordova.js"></script>
+    <script src="js/index.js"></script>
+    <script>
+        function enviarDados(event) {
+            event.preventDefault();
+            // Obtém os valores dos campos de entrada
+            const usuario = document.getElementById("username").value;
+            const senha = document.getElementById("password").value;
+            
+            // Cria um objeto FormData para enviar os dados para o PHP
+            const formData = new FormData();
+            formData.append("username", usuario);
+            formData.append("password", senha);
+            
+            // Envia uma solicitação POST para o PHP
+            fetch("https://polemapp.000webhostapp.com/autenticalogin.php", {
+                method: "POST",
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                // Se a validação for bem sucedida, redireciona para a homepage
+                if (data.validacao) {
+                    window.location.href = "https://polemweb.web.app/homepage.html"
+                    const id = data.user_id
+                    document.cookie = "user_id=" + id;
+                } else {
+                    alert("Usuário ou senha inválidos.");
+                }
+            })
+            .catch(error => {
+                console.error(error);
+            });
+        }
+    </script>
+</body>
+<h4 id="versao"> (nome) V1.0.0</h4>
+</html>
